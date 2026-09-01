@@ -1,0 +1,16 @@
+build/
+/dist/
+/build-*/
+/build_*/
+/release-*/
+.idea/
+.gradle/
+/x/
+local.properties
+/scrcpy-server
+*.exe
+*.obj
+*.pdb
+*.cfg
+!/scrcpy-gui/
+
