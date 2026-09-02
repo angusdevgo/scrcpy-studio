@@ -678,6 +678,7 @@ namespace ScrcpyStudio
         public MainForm()
         {
             InitWindowArchitecture();
+            LoadApplicationIcon();
             DetectScrcpyEngine();
             BuildCustomTitleBar();
             BuildSidebar();
@@ -699,6 +700,19 @@ namespace ScrcpyStudio
             SetStyle(ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
 
+        private void LoadApplicationIcon()
+        {
+            string iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "icon.ico");
+            if (!File.Exists(iconPath))
+                iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\app\data\icon.ico");
+
+            try
+            {
+                if (File.Exists(iconPath))
+                    Icon = new Icon(iconPath);
+            }
+            catch { }
+        }
         private void DetectScrcpyEngine()
         {
             string cfgFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "scrcpy_gui.cfg");
